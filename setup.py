@@ -14,7 +14,7 @@ setup(
     url="https://github.com/BioX-NKU/ASTER",
     author="BioX-NKU",
     packages=find_packages(),
-    python_requires='>=3.6.0',
+    python_requires='>=3.10.0',
     classifiers=[
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
