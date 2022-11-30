@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="epiaster",
-    version="0.0.2",
+    version="0.0.3",
     keywords=("pip", "aster", "single-cell"),
     description="ASTER: accurate estimation of cell-type numbers in single-cell chromatin accessibility data",
     long_description="ASTER provides an accurate and efficient way to estimate the number of cell types in single-cell chromatin accessibility data. We provide documentation in the form of functional application programming interface documentation, tutorials and example workflows at https://aster.readthedocs.io/en/latest/index.html. All ASTER wheels distributed on PyPI are MIT licensed.",
