@@ -3,7 +3,7 @@ scipy
 scikit-learn
 kneed
 scanpy
-episcanpy
+episcanpy==0.3.2
 igraph
 louvain
 leidenalg
