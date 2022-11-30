@@ -7,3 +7,4 @@ episcanpy==0.3.2
 igraph>=0.9.10
 louvain>=0.7.1
 leidenalg>=0.8.10
+tqdm

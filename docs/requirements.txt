@@ -9,3 +9,4 @@ louvain
 leidenalg
 sphinx_autodoc_typehints
 nbsphinx
+tqdm

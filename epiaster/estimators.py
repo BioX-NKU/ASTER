@@ -10,6 +10,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import davies_bouldin_score
 from sklearn.metrics import silhouette_score
 from sklearn.feature_extraction.text import TfidfTransformer
+from tqdm import tqdm
 from .utils import *
 
 
@@ -48,7 +49,7 @@ def ssd_knee_est(adata, search_list, seed=None):
         sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
     
     distances = []
-    for k in search_list:
+    for k in tqdm(search_list):
         kmeanModel = KMeans(n_clusters=k)
         kmeanModel.fit(adata.obsm['X_pca'])
         distances.append(kmeanModel.inertia_)
@@ -92,7 +93,7 @@ def davies_bouldin_est(adata, search_list, seed=None):
         sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
     
     scores = []
-    for k in search_list:
+    for k in tqdm(search_list):
         kmeans = KMeans(n_clusters=k)
         model = kmeans.fit_predict(adata.obsm['X_pca'])
         score = davies_bouldin_score(adata.obsm['X_pca'], model)
@@ -139,7 +140,7 @@ def silhouette_est(adata, search_list, seed=None):
     
     sil_louvain = []
     sil_leiden  = []
-    for k in search_list:
+    for k in tqdm(search_list):
         getNClusters(adata, n_cluster=k, method='louvain');
         if adata.obs.louvain.nunique() < 2:
             sil_louvain.append(-1)
