@@ -15,9 +15,12 @@ The dependencies will be automatically installed along with ASTER.
 
 Anaconda
 ~~~~~~~~
-If you do not have a working installation of Python 3.8 (or later), consider
-installing Miniconda_ (see `Installing Miniconda`_). 
+If you do not have a working installation of Python 3.10.0 (or later), consider installing Miniconda_ (see `Installing Miniconda`_). Once Anaconda has been installed, you can create and activate a Python 3.10.0 environment via::
 
+.. code:: shell
+
+    conda create -n py310 python=3.10
+    conda activate py310
 
 Installing Miniconda
 ~~~~~~~~~~~~~~~~~~~~
