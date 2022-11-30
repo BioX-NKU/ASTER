@@ -30,7 +30,7 @@ setup(
         'scikit-learn>=1.1.0',
         'kneed>=0.7.0',
         'scanpy>=1.9.1',
-        'episcanpy=0.3.2',
+        'episcanpy==0.3.2',
         'igraph>=0.9.10',
         'louvain>=0.7.1',
         'leidenalg>=0.8.10'
