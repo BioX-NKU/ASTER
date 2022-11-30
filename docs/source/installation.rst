@@ -22,7 +22,7 @@ If you do not have a working installation of Python 3.10.0 (or later), consider 
 
 Installing Miniconda
 ~~~~~~~~~~~~~~~~~~~~
-After downloading Miniconda_, in a unix shell (Linux, Mac), run
+After downloading Miniconda_, in a unix shell (Linux, Mac), run::
 
     cd DOWNLOAD_DIR
     chmod +x Miniconda3-latest-VERSION.sh
