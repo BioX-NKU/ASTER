@@ -42,7 +42,10 @@ def ssd_knee_est(adata, search_list, seed=None):
     tf_idf = scipy.sparse.csr_matrix(model.transform(adata.X))
     adata.X = tf_idf.copy()
         
-    sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
+    if adata.shape[0]<50:
+        sc.pp.pca(adata, n_comps=10, svd_solver='arpack', use_highly_variable=False)
+    else:
+        sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
     
     distances = []
     for k in search_list:
@@ -83,7 +86,10 @@ def davies_bouldin_est(adata, search_list, seed=None):
     tfidf_mat = np.multiply(nfreqs, np.tile(np.log(1 + 1.0 * count_mat.shape[1] / np.sum(count_mat,axis=1)).reshape(-1,1), (1,count_mat.shape[1])))
     adata.X = scipy.sparse.csr_matrix(tfidf_mat).T
         
-    sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
+    if adata.shape[0]<50:
+        sc.pp.pca(adata, n_comps=10, svd_solver='arpack', use_highly_variable=False)
+    else:
+        sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
     
     scores = []
     for k in search_list:
@@ -124,16 +130,26 @@ def silhouette_est(adata, search_list, seed=None):
     tfidf_mat = np.multiply(nfreqs, np.tile(np.log(1 + 1.0 * count_mat.shape[1] / np.sum(count_mat,axis=1)).reshape(-1,1), (1,count_mat.shape[1])))
     adata.X = scipy.sparse.csr_matrix(tfidf_mat).T
         
-    sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
-    sc.pp.neighbors(adata,  n_neighbors=15, n_pcs=50, method='umap', metric='euclidean')
+    if adata.shape[0]<50:
+        sc.pp.pca(adata, n_comps=10, svd_solver='arpack', use_highly_variable=False)
+        sc.pp.neighbors(adata,  n_neighbors=5, n_pcs=10, method='umap', metric='euclidean')
+    else:
+        sc.pp.pca(adata, n_comps=50, svd_solver='arpack', use_highly_variable=False)
+        sc.pp.neighbors(adata,  n_neighbors=15, n_pcs=50, method='umap', metric='euclidean')
     
     sil_louvain = []
     sil_leiden  = []
     for k in search_list:
         getNClusters(adata, n_cluster=k, method='louvain');
-        sil_louvain.append(silhouette_score(adata.obsm['X_pca'], adata.obs['louvain'], metric='correlation'))
+        if adata.obs.louvain.nunique() < 2:
+            sil_louvain.append(-1)
+        else:
+            sil_louvain.append(silhouette_score(adata.obsm['X_pca'], adata.obs['louvain'], metric='correlation'))
         getNClusters(adata, n_cluster=k, method='leiden');
-        sil_leiden.append(silhouette_score(adata.obsm['X_pca'], adata.obs['leiden'], metric='correlation'))  
+        if adata.obs.leiden.nunique() < 2:
+            sil_leiden.append(-1)
+        else:
+            sil_leiden.append(silhouette_score(adata.obsm['X_pca'], adata.obs['leiden'], metric='correlation'))  
     sil_est = search_list[np.argmax(np.array(sil_louvain) + np.array(sil_leiden))]
     
     return sil_est
