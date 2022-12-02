@@ -27,6 +27,9 @@ ASTER: accurately estimating the number of cell types in single-cell chromatin a
    release/index
 
 
+Recent innovations in single-cell chromatin accessibility sequencing (scCAS) have revolutionized the characterization of epigenomic heterogeneity. Estimation of the number of cell types is a crucial step for downstream analyses and biological implications. Here we propose ASTER, an ensemble learning-based tool for accurately estimating the number of cell types in scCAS data.
+
+
 News
 ----
 
