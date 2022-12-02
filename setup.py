@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="epiaster",
-    version="0.0.5",
+    version="0.0.6",
     keywords=("pip", "aster", "single-cell"),
     description="ASTER: accurate estimation of cell-type numbers in single-cell chromatin accessibility data",
     long_description="ASTER provides an accurate and efficient way to estimate the number of cell types in single-cell chromatin accessibility data. We provide documentation in the form of functional application programming interface documentation, tutorials and example workflows at https://aster.readthedocs.io/en/latest/index.html. All ASTER wheels distributed on PyPI are MIT licensed.",
@@ -14,11 +14,11 @@ setup(
     url="https://github.com/BioX-NKU/ASTER",
     author="BioX-NKU",
     packages=find_packages(),
-    python_requires='>=3.10.0',
+    python_requires='>=3.8.13',
     classifiers=[
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.8',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX :: Linux',
