@@ -46,5 +46,5 @@ ASTER can also be seamlessly integrated with [EpiScanpy](https://episcanpy.readt
 
 ##
 ## The source code for the reproduction of results can be found [here](https://github.com/BioX-NKU/ASTER_reproducibility/).
-## We also provide a [Jupyter Notebook](https://github.com/BioX-NKU/ASTER_reproducibility/example.ipynb) for running ASTER.
+## We also provide a [Jupyter Notebook](https://github.com/BioX-NKU/ASTER_reproducibility/blob/main/example.ipynb) for running ASTER.
 ## Find more details on [the Documentation of ASTER](https://aster.readthedocs.io/en/latest/index.html).
